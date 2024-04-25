@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import army from "../images/army.jpg";
 import flood from "../images/flood.jpg"
 import orphan from "../images/orphan.jpg"
@@ -13,15 +12,24 @@ import amry2 from "../images/army2.jpg";
 
 const DonorDonate = () => {
     const [amounts, setAmounts] = useState({});
-    
-    const amountSet = (id, value) => {
-        setAmounts(prevAmounts => ({
-            ...prevAmounts,
-            [id]: value
-        }));
-    };
+    const [donorData, setDonorData] = useState("");
+    const [errorMessage, setErrorMessage] = useState('');
+    const [message, setMessage] = useState('');
 
-    const handleDonate = (product) => {
+    useEffect(() => {
+        const storedDonorData = localStorage.getItem('donor');
+        if (storedDonorData) {
+            const parsedDonorData = JSON.parse(storedDonorData);
+            setDonorData(parsedDonorData)
+        }
+    }, []);
+    
+
+    const firstName = donorData.firstName;
+    const lastName = donorData.lastName;
+    const email = donorData.email;
+
+    const handleDonate = async (product) => {
         const amount = amounts[product.id];
         if (amount === undefined || amount === '') {
             alert("Please enter an amount");
@@ -50,12 +58,34 @@ const DonorDonate = () => {
             };
             var pay = new window.Razorpay(options);
             pay.open();
+            
+            var requestData = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                donatedAmount: amount
+            };
+            try {
+                const response = await axios.post('http://localhost:2024/inserttrans', requestData);
+                setMessage("Donation Done");
+                setErrorMessage('');
+            } catch (error) {
+                console.error('Error in donating:', error);
+                setErrorMessage('Donation failed. Please try again.');
+                setMessage('');
+            }
+             requestData = {
+                donatedAmount: ''
+            };
         }
+            
+        
     };
 
     const initialProducts = [
         { id: 1, name: 'Donate to army people', image: army, by: "army", description: "Support our soldiers with essential needs." },
         { id: 2, name: 'Help the people attacked in floods', image: flood, by: "people", description: "Provide relief to flood-affected families." },
+        // Other products...
         { id: 3, name: 'Donate to orphan kids', image: orphan, by: "orphan home", description: "Help orphanages provide care and education." },
         { id: 4, name: 'Help poor kids', image: pic1, by: "poor kids", description: "Support underprivileged children with education and healthcare." },
         { id: 5, name: 'Save the forest people', image: pic2, by: "forest people", description: "Contribute to the conservation of indigenous communities and forests." },
@@ -86,16 +116,12 @@ const DonorDonate = () => {
                                 <img src={product.image} alt={product.name} style={styles.image} />
                             </div>
                             <br />
-                            {/* <p style={styles.productName}>{product.name}</p> */}
-                            <br />
                             <b style={{color:"black"}}>Lender: </b>{`: ${product.by}`}
                             <br />
-                            {/* <p style={styles.description}>{product.description}</p>
-                             */}
                             <b style={{color:"black"}}>Description:</b> {` : ${product.description}`}
                             <br />
                             <div style={styles.amountContainer}>
-                                Amount: <input type="text" placeholder="Enter donation amount " value={amounts[product.id] || ''} onChange={(e) => amountSet(product.id, e.target.value)} style={inputStyles} />
+                                Amount: <input type="text" placeholder="Enter donation amount " value={amounts[product.id] || ''} onChange={(e) => setAmounts(prevAmounts => ({ ...prevAmounts, [product.id]: e.target.value }))} style={inputStyles} />
                                 <button onClick={() => handleDonate(product)} style={styles.donateButton}>Donate</button>
                             </div>
                         </div>
@@ -110,7 +136,6 @@ const styles = {
     container: {
         textAlign: 'center',
         color: 'white',
-        // background: 'linear-gradient(to right, #fff8e1, #f5ecdf)'
         background: 'white'
     },
     heading: {
@@ -143,13 +168,6 @@ const styles = {
         width: '100%',
         height: '100%',
         objectFit: 'cover'
-    },
-    productName: {
-        fontSize: '1.5em',
-        fontWeight: 'bold'
-    },
-    description: {
-        fontSize: '1em'
     },
     amountContainer: {
         marginTop: '20px'

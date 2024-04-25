@@ -15,9 +15,11 @@ app.use(express.json())
 
 const donorrouter = require("./routes/donorroute")
 const adminrouter = require('./routes/adminroutes')
+const transrouter = require('./routes/transroute');
 
 app.use("",donorrouter)
 app.use("",adminrouter)
+app.use("",transrouter)
 
 
 const port = 2024

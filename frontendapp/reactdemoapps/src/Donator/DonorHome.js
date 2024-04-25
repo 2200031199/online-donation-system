@@ -19,7 +19,14 @@ const DonorHome = () => {
     const storedDonorData = localStorage.getItem('donor');
     if (storedDonorData) {
       const parsedDonorData = JSON.parse(storedDonorData);
-      setDonorData(parsedDonorData)
+      // Capitalize donor data
+      const capitalizedDonorData = {
+        firstName: parsedDonorData.firstName.toUpperCase(),
+        lastName: parsedDonorData.lastName.toUpperCase(),
+        email: parsedDonorData.email.toUpperCase(),
+        contact: parsedDonorData.contact.toUpperCase()
+      };
+      setDonorData(capitalizedDonorData);
     }
   }, []);
   const myStyle = {
@@ -32,28 +39,30 @@ const DonorHome = () => {
     
 };
 
+
 const handleLoginClick = () => {
     window.location.href = 'http://localhost:3000/donorlogin';
+
 };
 
+
   return (
-    <Container>
-      {donorData && (
-        <div>
-          <WelcomeText>Welcome {donorData.email}</WelcomeText>
-        </div>
-      )}
+    
       <div className='home'>  
             <div class='hero'>
                 <div class="hero-one"></div>
                 <div class="hero-two"></div>
-                <h1 class="header-title"><span class="header-primary">DONATE TO SAVE LIVES</span></h1>
-                <p>Join our community dedicated to supporting and uplifting elders! Through various initiatives and programs, we create a nurturing environment that promotes their well-being, and overall quality of life.</p>
+              
+                <h1 class="header-title"><span class="header-primary"> hey! <br/>{donorData.firstName} {donorData.lastName}</span></h1>
+                <p>
+Welcome to our donation page! <br/>
+
+Thank you for considering supporting our cause. Your generosity fuels our mission and directly impacts the lives of those we serve. Whether it's providing education, healthcare, or vital resources, every contribution makes a difference.</p>
                 <button className='buttonhome' onClick={handleLoginClick}>Start Donating !!</button>
                 
             </div>
         </div>
-    </Container>
+    
   );
 }
 
