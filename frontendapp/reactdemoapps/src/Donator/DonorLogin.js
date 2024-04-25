@@ -4,12 +4,14 @@ import './login.css';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // If you're using CSS icons, include this
+import { useNavigate } from 'react-router-dom';
 
-const DonorLogin = () => {
+const DonorLogin = ({onDonorLogin}) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +24,11 @@ const DonorLogin = () => {
     try {
       const response = await axios.post('http://localhost:2024/checkdonor', formData);
       if (response.data != null) {
-        console.log(response.data);
-        // navigate("/jobseekerhome");
-        window.location.href = "http://localhost:3000/donate";
+        onDonorLogin();
+
+        localStorage.setItem('donor', JSON.stringify(response.data));
+
+        navigate("/donorhome");;
       } else {
         alert("Email and Password does not match");
       }
@@ -61,7 +65,7 @@ const DonorLogin = () => {
               <a href=''>Login</a>
               <hr />
               <br />
-              <input type="text" placeholder="Username" name="email" value={formData.email} onChange={handleChange} />
+              <input type="text" placeholder="Email" name="email" value={formData.email} onChange={handleChange} />
               <br />
               <input type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
               <br />

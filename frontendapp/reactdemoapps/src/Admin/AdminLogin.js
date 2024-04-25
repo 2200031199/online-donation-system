@@ -12,14 +12,16 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useNavigate } from 'react-router-dom';
 
-export default function AdminLogin() {
+export default function AdminLogin({ onAdminLogin }) {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,8 +33,11 @@ export default function AdminLogin() {
     try {
       const response = await axios.post('http://localhost:2024/checkadminlogin', formData);
       if (response.data != null) {
-        // Redirect to http://localhost:3000/admin upon successful login
-        window.location.href = 'http://localhost:3000/admin';
+        onAdminLogin();
+
+        localStorage.setItem('admin', JSON.stringify(response.data));
+        
+        navigate("/adminhome");
       } else {
         setMessage("Login Failed");
         setError("");

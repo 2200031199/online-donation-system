@@ -11,18 +11,18 @@ import AdminLogin from '../Admin/AdminLogin';
 import Donate from '../Donator/Donate';
 import AdminView from '../Admin/AdminView';
 
-const NavBar = () => {
+const NavBar = ({onAdminLogin,onDonorLogin}) => {
   return (
     <div>
       <MainNavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/donorlogin" element={<DonorLogin />} />
+        <Route path="/donorlogin" element={<DonorLogin onDonorLogin={onDonorLogin} />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/admin" element={<AdminView/>} />
         <Route path="/donate" element={<Donate />} />
-        <Route path='/adminlogin' element={<AdminLogin/>}/>
+        <Route path='/adminlogin' element={<AdminLogin onAdminLogin={onAdminLogin} />}/>
       </Routes>
     </div>
   );

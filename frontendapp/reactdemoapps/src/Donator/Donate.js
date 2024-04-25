@@ -1,58 +1,21 @@
 import React, { useState } from 'react';
-
-
+import { useHistory } from 'react-router-dom';
 import army from "../images/army.jpg";
-import flood from "../images/flood.jpg"
-import orphan from "../images/orphan.jpg"
-import pic1 from "../images/pic1.jpg"
-import pic2 from "../images/pic2.jpg"
-import cancer from "../images/cancer.jpg"
-import cancer2 from "../images/cancer2.jpg"
-import floods2 from "../images/floods2.jpg"
+import flood from "../images/flood.jpg";
+import orphan from "../images/orphan.jpg";
+import pic1 from "../images/pic1.jpg";
+import pic2 from "../images/pic2.jpg";
+import cancer from "../images/cancer.jpg";
+import cancer2 from "../images/cancer2.jpg";
+import floods2 from "../images/floods2.jpg";
 import amry2 from "../images/army2.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const Donate = () => {
     const [amounts, setAmounts] = useState({});
+   
+    const navigate = useNavigate();
     
-    const amountSet = (id, value) => {
-        setAmounts(prevAmounts => ({
-            ...prevAmounts,
-            [id]: value
-        }));
-    };
-
-    const handleDonate = (product) => {
-        const amount = amounts[product.id];
-        if (amount === undefined || amount === '') {
-            alert("Please enter an amount");
-        } else {
-            var options = {
-                key: "rzp_test_FmhSMoagxjdqsj",
-                key_secret: "Aw5vNsHur5csQLKhJssAiJzf",
-                amount: amount * 100,
-                currency: "INR",
-                name: "DonateEasy!",
-                description: product.description,
-                handler: function(response) {
-                    alert(`Donation of Rs.${amount}/- is Successful`)
-                },
-                prefill: {
-                    name: "admin",
-                    email: "donateeasy@gmail.com",
-                    contact: "7412589631"
-                },
-                notes: {
-                    address: "Razorpay Corporate office"
-                },
-                theme: {
-                    color: "8e3969"
-                }
-            };
-            var pay = new window.Razorpay(options);
-            pay.open();
-        }
-    };
-
     const initialProducts = [
         { id: 1, name: 'Donate to army people', image: army, by: "army", description: "Support our soldiers with essential needs." },
         { id: 2, name: 'Help the people attacked in floods', image: flood, by: "people", description: "Provide relief to flood-affected families." },
@@ -66,13 +29,65 @@ const Donate = () => {
         { id: 10, name: 'Help to our Indian army', image: amry2, by: "Indian army", description: "Support Indian soldiers with essential needs and welfare." },
     ];
 
-    const inputStyles = {
-        width: 'calc(100% - 22px)',
-        padding: '10px',
-        margin: '10px 0',
-        border: '1px solid #ccc',
-        borderRadius: '5px',
-        fontSize: '16px'
+   
+    const handleButtonClick = () => {
+        navigate('/registration');
+    };
+
+    const styles = {
+        container: {
+            textAlign: 'center',
+            color: 'white',
+            background: 'white'
+        },
+        heading: {
+            paddingTop: '50px',
+            fontSize: '3em',
+            color: 'black',
+            fontFamily: 'cursive'
+        },
+        productContainer: {
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '50px'
+        },
+        card: {
+            width: '250px',
+            margin: '20px',
+            padding: '20px',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            borderRadius: '10px'
+        },
+        imageContainer: {
+            width: '100%',
+            height: '200px',
+            overflow: 'hidden',
+            borderRadius: '10px'
+        },
+        image: {
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover'
+        },
+        amountContainer: {
+            marginTop: '20px'
+        },
+        donateButton: {
+            marginTop: '10px',
+            padding: '12px',
+            background: 'linear-gradient(to right, #a22f4f, #8e3969)',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '5px',
+            fontSize: '18px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s',
+        },
+        donateButtonHover: {
+            background: '#1e1e1e'
+        }
     };
 
     return (
@@ -86,17 +101,13 @@ const Donate = () => {
                                 <img src={product.image} alt={product.name} style={styles.image} />
                             </div>
                             <br />
-                            {/* <p style={styles.productName}>{product.name}</p> */}
+                            <b style={{color:"black"}}>Lender: </b>{`: ${product.by}`}
                             <br />
-                            {`Lender: ${product.by}`}
-                            <br />
-                            {/* <p style={styles.description}>{product.description}</p>
-                             */}
-                             {`Description : ${product.description}`}
+                            <b style={{color:"black"}}>Description:</b> {` : ${product.description}`}
                             <br />
                             <div style={styles.amountContainer}>
-                                Amount: <input type="text" placeholder="Enter donation amount " value={amounts[product.id] || ''} onChange={(e) => amountSet(product.id, e.target.value)} style={inputStyles} />
-                                <button onClick={() => handleDonate(product)} style={styles.donateButton}>Donate</button>
+                                {/* <button onClick={() => handleDonate(product)} style={styles.donateButton}>Donate</button> */}
+                                <button onClick={handleButtonClick} style={styles.donateButton}>Donate </button>
                             </div>
                         </div>
                     ))}
@@ -104,70 +115,6 @@ const Donate = () => {
             </div>
         </div>
     );
-};
-
-const styles = {
-    container: {
-        textAlign: 'center',
-        color: 'white',
-        // background: 'linear-gradient(to right, #fff8e1, #f5ecdf)'
-        background: 'white'
-    },
-    heading: {
-        paddingTop: '50px',
-        fontSize: '3em',
-        color: 'black',
-        fontFamily: 'cursive'
-    },
-    productContainer: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '50px'
-    },
-    card: {
-        width: '250px',
-        margin: '20px',
-        padding: '20px',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        borderRadius: '10px'
-    },
-    imageContainer: {
-        width: '100%',
-        height: '200px',
-        overflow: 'hidden',
-        borderRadius: '10px'
-    },
-    image: {
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover'
-    },
-    productName: {
-        fontSize: '1.5em',
-        fontWeight: 'bold'
-    },
-    description: {
-        fontSize: '1em'
-    },
-    amountContainer: {
-        marginTop: '20px'
-    },
-    donateButton: {
-        marginTop: '10px',
-        padding: '12px',
-        background: 'linear-gradient(to right, #a22f4f, #8e3969)',
-        color: '#fff',
-        border: 'none',
-        borderRadius: '5px',
-        fontSize: '18px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s',
-    },
-    donateButtonHover: {
-        background: '#1e1e1e'
-    }
 };
 
 export default Donate;
