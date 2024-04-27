@@ -11,11 +11,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { Link, useNavigate } from 'react-router-dom';
+import config from '../config';
 
 const pages = [
   { label: 'Home', path: '/donorhome' },
   { label: 'Profile', path :'/donorprofile' },
-  { label: 'Transactions', path : '/donortrans' },
+  // { label: 'Transactions', path : '/donortrans' },
   { label: 'Donate', path: '/donate' },
 ];
 
@@ -40,7 +41,7 @@ function DonorNavBar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ background: 'linear-gradient(to right, #a22f4f, #8e3969)' }}>
+    <AppBar position="sticky" sx={{ background: 'linear-gradient(to right,#007bff, #0056b3)' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -58,7 +59,7 @@ function DonorNavBar() {
               textDecoration: 'none',
             }}
           >
-            DonateEasy!
+            Don8wise!
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -113,7 +114,7 @@ function DonorNavBar() {
               textDecoration: 'none',
             }}
           >
-            DonateEasy!
+           Don8wise!
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

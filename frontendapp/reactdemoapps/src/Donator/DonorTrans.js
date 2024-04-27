@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import config from '../config';
 
 const DonorTrans = () => {
     const [transactions, setTransactions] = useState([]);
@@ -19,7 +20,7 @@ const DonorTrans = () => {
         const fetchTransactions = async () => {
             try {
                 if (donorData.email) {
-                    const response = await axios.get(`http://localhost:2024/viewtrans?email=${donorData.email}`);
+                    const response = await axios.get(`${config.url}/viewtrans?email=${donorData.email}`);
                     console.log("Transactions:", response.data);
                     setTransactions(response.data);
                 }

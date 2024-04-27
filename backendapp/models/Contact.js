@@ -9,15 +9,11 @@ const citizenContactSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  contactNumber: {
+  subject: {
     type: String,
     required: true
   },
-  address: {
-    type: String,
-    required: true
-  },
-  problem: {
+  message: {
     type: String,
     required: true
   }

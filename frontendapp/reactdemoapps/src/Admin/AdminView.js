@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import pic from '../images/volunteer.jpg'
+import config from '../config';
 
 
 const AdminView = () => {
@@ -10,7 +11,7 @@ const AdminView = () => {
 
   const fetchDonors = async () => {
     try {
-      const response = await axios.get('http://localhost:2024/viewdonors');
+      const response = await axios.get(`${config.url}/viewdonors`);
       setDonors(response.data);
     } catch (error) {
       console.error(error.message);
@@ -23,7 +24,7 @@ const AdminView = () => {
 
   const deleteDonor = async (email) => {
     try {
-      await axios.delete(`http://localhost:2024/deletedonors/${email}`);
+      await axios.delete(`${config.url}/deletedonors/${email}`);
       fetchDonors();
     } catch (error) {
       console.error(error.message);

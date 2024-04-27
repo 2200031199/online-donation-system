@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import PaidIcon from '@mui/icons-material/Paid'; // Import PaidIcon
 import { Link } from 'react-router-dom';
+import config from '../config';
 
 const pages = [
   { label: 'Home', path: '/' },
@@ -51,10 +52,10 @@ function MainNavBar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ background: 'linear-gradient(to right, #a22f4f, #8e3969)' }}>
+    <AppBar position="sticky" style={{ background: '#007bff'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <PaidIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> {/* Use PaidIcon */}
+          
           <Typography
             variant="h6"
             noWrap
@@ -70,7 +71,7 @@ function MainNavBar() {
               textDecoration: 'none',
             }}
           >
-            DonateEasy!
+            Don8wise!
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -126,7 +127,7 @@ function MainNavBar() {
               textDecoration: 'none',
             }}
           >
-            DonateEasy!
+            Don8wise!
           </Typography>
     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

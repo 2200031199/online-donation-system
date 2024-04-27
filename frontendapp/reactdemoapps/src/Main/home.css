@@ -1,89 +1,92 @@
-/* home.css */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Yanone+Kaffeesatz:wght@200..700&display=swap');
-
-* {
+.home-page {
+  background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9uYXRpb258ZW58MHx8MHx8fDA%3D'); /* Replace 'your-background-image-url.jpg' with your actual image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Adjust height as needed */
+}
+.home-content {
+  padding: 20px;
+  color: #ffffff; /* Text color */
+}
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: rgb(242, 236, 236);
+}
+
+.header-title .header-primary {
+  color: white;
 }
 
 .hero {
-  width: 100vw;
-  height: 100vh;
   text-align: center;
-  color: #CCC;
-  position: relative;
-  text-transform: uppercase;
-  font-family: 'Josefin Sans';
-  letter-spacing: 17.5px;
+  margin-bottom: 50px;
 }
 
-.hero-one {
-  top: 0;
-  position: absolute;
-  width: 60%;
-  background-color: black;
-  height: 100vh;
-  clip-path: polygon(0 0, 60vw 0, 40vw 100vh, 0 100vh);
-  z-index: 1;
-  background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('../images/donate.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.hero h2 {
+  font-size: 28px;
+  color: #f5f0f0;
 }
 
-.hero-two {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 60%;
-  background-color: green;
-  height: 100vh;
-  background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.5)), url('../images/page-header.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+.hero p {
+  color: #666;
+  margin-bottom: 20px;
 }
 
-.header-title {
-  z-index: 2;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.header-primary {
-  font-size: 2em;
-  display: block;
-  font-weight: 700;
-}
-
-p {
-  font-family: 'Yanone Kaffeesatz';
-  align-items: center;
-  z-index: 2;
-  display: flex;
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-transform: none;
-  letter-spacing: 5px;
-}
-
-.buttonhome {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+button {
   padding: 10px 20px;
-  border-radius: 50px;
-  background: linear-gradient(to right, #FF512F, #DD2476);
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
   cursor: pointer;
-  z-index: 3;
-  color: white;
-  font-family: 'Josefin Sans';
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.features {
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 24px;
+  color: #f1ebeb;
+  margin-bottom: 20px;
+}
+
+.features ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  font-size: 18px;
+  color: #666666;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #666;
 }

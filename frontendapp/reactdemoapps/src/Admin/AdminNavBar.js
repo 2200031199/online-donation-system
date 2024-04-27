@@ -17,6 +17,7 @@ const pages = [
   { label: 'Profile', path: '/adminprofile' },
   { label: 'View Transactions', path: '/donortrans' },
   { label: 'Donators', path: '/donators' },
+  { label: 'View Donor', path: '/viewdonor' }, // New entry for View Donor
 ];
 
 function AdminNavBar() {
@@ -38,9 +39,8 @@ function AdminNavBar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
   return (
-    <AppBar position="sticky" sx={{ background: 'linear-gradient(to right, #a22f4f, #8e3969)' }}>
+    <AppBar position="sticky" style={{ background: '#007bff' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

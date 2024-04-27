@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import config from '../config';
 
 const DonorProfile = () => {
     const [donorData, setDonorData] = useState("");

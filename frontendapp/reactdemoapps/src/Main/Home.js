@@ -1,5 +1,6 @@
 import React from 'react';
-import './home.css';
+import  './home.css';
+import config from '../config';
 
 const Home = () => {
     const myStyle = {
@@ -17,12 +18,14 @@ const Home = () => {
     };
     
     return (
-        <div className='home'>  
+        
+        <div className='home-page'>  
             <div class='hero'>
                 <div class="hero-one"></div>
                 <div class="hero-two"></div>
-                <h1 class="header-title"><span class="header-primary">DONATE TO SAVE LIVES</span></h1>
-                <p>Join our community dedicated to supporting and uplifting elders! Through various initiatives and programs, we create a nurturing environment that promotes their well-being, and overall quality of life.</p>
+                <h1 class="header-title"><span class="header-primary" >DONATE NOW!</span></h1>
+                <p>Your Contributions can change our lives
+                    </p><br/>
                 <button className='buttonhome' onClick={handleLoginClick}>Login to the Donor Community</button>
                 
             </div>

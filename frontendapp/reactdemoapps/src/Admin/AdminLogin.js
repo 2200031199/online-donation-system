@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 export default function AdminLogin({ onAdminLogin }) {
   const [formData, setFormData] = useState({
@@ -31,7 +32,7 @@ export default function AdminLogin({ onAdminLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2024/checkadminlogin', formData);
+      const response = await axios.post(`${config.url}/checkadminlogin`, formData);
       if (response.data != null) {
         onAdminLogin();
 
@@ -70,7 +71,7 @@ export default function AdminLogin({ onAdminLogin }) {
             {error}
           </Typography>
         )}
-        <Avatar sx={{ m: 1, bgcolor: '#8e3969' }}>
+        <Avatar sx={{ m: 1, bgcolor: '#007bff' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -110,19 +111,19 @@ export default function AdminLogin({ onAdminLogin }) {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2, bgcolor: '#8e3969' }}
+            sx={{ mt: 3, mb: 2, bgcolor: '#007bff' }}
           >
             Login
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
+                
               </Link>
             </Grid>
             <Grid item>
               <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {""}
               </Link>
             </Grid>
           </Grid>

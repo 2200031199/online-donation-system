@@ -15,7 +15,7 @@ body {
 .login-text {
     width: 800px;
     height:450px;
-    background: linear-gradient(to right, #a22f4f, #8e3969); 
+    background: linear-gradient(to right, #007bff, #0056b3); 
     position: absolute;
     top: -300px;
     box-sizing: border-box;
@@ -71,15 +71,15 @@ body {
     }
 
     .login-btn {
-        background:#352f44;
+        background:#121314;
         border: none;
         border-radius: 2px;
         color: #fff;
     }
 
     .signup-btn {
-        background:#352f44;
-        background:#352f44;
+        background:#007bff;
+        background:#007bff;
         border: 2px solid ;
         border-radius: 2px;
         color: #fff;
@@ -91,7 +91,7 @@ body {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #8e3969;
+    background:#007bff;
     border: 2px solid #fff;
     position: absolute;
     bottom: -30px;
@@ -129,7 +129,7 @@ body {
         width: 280px;
         border: none;
         border-radius: 20px;
-        background: linear-gradient(to right, #a22f4f, #8e3969); 
+        background: linear-gradient(to right,#007bff, #0056b3); 
         color: #fff;
         font-weight: bolder;
         margin-top: 60px;

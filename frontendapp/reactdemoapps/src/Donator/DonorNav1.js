@@ -15,6 +15,7 @@ import DonorTrans from '../Donator/DonorTrans'
 import DonorHome from '../Donator/DonorHome'
 import Home from '../Main/Home'
 import DonorDonate from '../Donator/DonorDonate';
+import config from '../config';
 
 const DonorNavBar1 = () => {
   return (
@@ -25,7 +26,7 @@ const DonorNavBar1 = () => {
         <Route path="/donorhome" element={<DonorHome/>} />
         <Route path="/donate" element={<DonorDonate/>} />
         <Route path='/donorprofile' element={<DonorProfile/>}/>
-        <Route path='/donortrans' element={<DonorTrans/>}/>
+        {/* <Route path='/donortrans' element={<DonorTrans/>}/> */}
         <Route path='/logout' element={<Home/>}/>
       </Routes>
     </div>

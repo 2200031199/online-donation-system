@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // If you're using CSS icons, include this
 import { useNavigate } from 'react-router-dom';
+import config from '../config';
 
 const DonorLogin = ({onDonorLogin}) => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const DonorLogin = ({onDonorLogin}) => {
     e.preventDefault();
     console.log("Login button clicked");
     try {
-      const response = await axios.post('http://localhost:2024/checkdonor', formData);
+      const response = await axios.post(`${config.url}/checkdonor`, formData);
       if (response.data != null) {
         onDonorLogin();
 
@@ -84,7 +85,7 @@ const DonorLogin = ({onDonorLogin}) => {
           <h1>
             <span>"Login to Donate</span> and Make a Difference!"
           </h1>
-          <button onClick={toggleExpand}>Login to the Donor Community</button>
+          <button onClick={toggleExpand}style={{ backgroundColor: '#007bff', color: 'white' }} >Login to the Donor Community</button>
         </div>
       </div>
     </div>

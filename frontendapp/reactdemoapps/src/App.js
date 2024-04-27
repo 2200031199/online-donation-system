@@ -7,6 +7,7 @@ import DonorNavBar from './Donator/DonorNavBar';
 import AdminNavBar from './Admin/AdminNavBar';
 import AdminNav1 from './Admin/AdminNav1';
 import DonorNavBar1 from './Donator/DonorNav1';
+import config from './config';
 
 function App() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);

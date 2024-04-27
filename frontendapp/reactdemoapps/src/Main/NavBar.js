@@ -10,6 +10,7 @@ import Registration from '../Donator/Registration';
 import AdminLogin from '../Admin/AdminLogin';
 import Donate from '../Donator/Donate';
 import AdminView from '../Admin/AdminView';
+import config from '../config';
 
 const NavBar = ({onAdminLogin,onDonorLogin}) => {
   return (

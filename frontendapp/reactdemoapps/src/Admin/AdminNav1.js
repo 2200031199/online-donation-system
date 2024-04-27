@@ -19,6 +19,8 @@ import AdminView from '../Admin/AdminView';
 import ViewTrans from '../Admin/ViewTrans';
 import AdminHome from '../Admin/AdminHome'
 import AdminProfile from '../Admin/AdminProfile'
+import ViewDonors from './ViewDonors';
+import config from '../config'
 
 const AdminNav1 = () => {
   return (
@@ -27,7 +29,7 @@ const AdminNav1 = () => {
       <Routes>
         <Route path="/" element={<AdminHome/>} />
         <Route path="/adminhome" element={<AdminHome/>} />
-
+        <Route path='/viewdonors' element={<ViewDonors/>}/>
         <Route path="/donators" element={<AdminView/>} />
         <Route path='/adminprofile' element={<AdminProfile/>}/>
         <Route path='/donortrans' element={<ViewTrans/>}/>

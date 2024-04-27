@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { styled } from '@mui/system';
-
+import config from '../config';
 const Container = styled('div')({
   textAlign: 'center',
   marginTop: '50px',
@@ -48,7 +48,8 @@ const handleLoginClick = () => {
 
   return (
     
-      <div className='home'>  
+      <div className='home' style={{
+        backgroundImage: "url('/donate1.jpg')"}}>  
             <div class='hero'>
                 <div class="hero-one"></div>
                 <div class="hero-two"></div>

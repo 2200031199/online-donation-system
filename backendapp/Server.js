@@ -22,7 +22,7 @@ app.use("",adminrouter)
 app.use("",transrouter)
 
 
-const port = 2024
+const port = 3149
 app.listen( port, () =>{
     console.log(`Server is Running at ${port}`)
 })

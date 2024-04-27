@@ -10,6 +10,7 @@ import cancer2 from "../images/cancer2.jpg";
 import floods2 from "../images/floods2.jpg";
 import amry2 from "../images/army2.jpg";
 import { useNavigate } from 'react-router-dom';
+import config from './../config';
 
 const Donate = () => {
     const [amounts, setAmounts] = useState({});
@@ -17,16 +18,16 @@ const Donate = () => {
     const navigate = useNavigate();
     
     const initialProducts = [
-        { id: 1, name: 'Donate to army people', image: army, by: "army", description: "Support our soldiers with essential needs." },
+       // { id: 1, name: 'Donate to army people', image: army, by: "army", description: "Support our soldiers with essential needs." },
         { id: 2, name: 'Help the people attacked in floods', image: flood, by: "people", description: "Provide relief to flood-affected families." },
         { id: 3, name: 'Donate to orphan kids', image: orphan, by: "orphan home", description: "Help orphanages provide care and education." },
-        { id: 4, name: 'Help poor kids', image: pic1, by: "poor kids", description: "Support underprivileged children with education and healthcare." },
-        { id: 5, name: 'Save the forest people', image: pic2, by: "forest people", description: "Contribute to the conservation of indigenous communities and forests." },
+        //{ id: 4, name: 'Help poor kids', image: pic1, by: "poor kids", description: "Support underprivileged children with education and healthcare." },
+        //{ id: 5, name: 'Save the forest people', image: pic2, by: "forest people", description: "Contribute to the conservation of indigenous communities and forests." },
         { id: 6, name: 'Help to cancer patients', image: cancer, by: "cancer patients", description: "Assist cancer patients with treatment and support services." },
-        { id: 7, name: 'Save orphan kids', image: orphan, by: "orphan kids", description: "Support orphaned children with shelter and care." },
-        { id: 8, name: 'Give life to cancer patients', image: cancer2, by: "cancer people", description: "Provide life-saving treatment and care to cancer patients." },
+        //{ id: 7, name: 'Save orphan kids', image: orphan, by: "orphan kids", description: "Support orphaned children with shelter and care." },
+        //{ id: 8, name: 'Give life to cancer patients', image: cancer2, by: "cancer people", description: "Provide life-saving treatment and care to cancer patients." },
         { id: 9, name: 'Help the people', image: floods2, by: "attacked people", description: "Assist communities affected by natural disasters like floods." },
-        { id: 10, name: 'Help to our Indian army', image: amry2, by: "Indian army", description: "Support Indian soldiers with essential needs and welfare." },
+        //{ id: 10, name: 'Help to our Indian army', image: amry2, by: "Indian army", description: "Support Indian soldiers with essential needs and welfare." },
     ];
 
    
@@ -44,7 +45,7 @@ const Donate = () => {
             paddingTop: '50px',
             fontSize: '3em',
             color: 'black',
-            fontFamily: 'cursive'
+            fontFamily: 'Arial'
         },
         productContainer: {
             display: 'flex',
@@ -77,7 +78,7 @@ const Donate = () => {
         donateButton: {
             marginTop: '10px',
             padding: '12px',
-            background: 'linear-gradient(to right, #a22f4f, #8e3969)',
+            background: 'linear-gradient(to right,#0000ff, #00008b)',
             color: '#fff',
             border: 'none',
             borderRadius: '5px',
@@ -93,7 +94,7 @@ const Donate = () => {
     return (
         <div className='donate'>
             <div style={styles.container}>
-                <h1 style={styles.heading}>Donate and Save Lives!</h1>
+                <h1 style={styles.heading}>Donate Now!</h1>
                 <div style={styles.productContainer}>
                     {initialProducts.map(product => (
                         <div key={product.id} style={styles.card}>
